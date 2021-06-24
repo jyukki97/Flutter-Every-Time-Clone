@@ -46,7 +46,7 @@ class _TopListWidgetState extends State<TopListWidget> {
                 margin: EdgeInsets.all(15.0),
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  border: Border.all(color: greyColor),
+                  border: Border.all(color: borderColor),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(

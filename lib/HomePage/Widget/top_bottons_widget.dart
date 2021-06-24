@@ -30,9 +30,6 @@ class TopButtonsWidget extends StatelessWidget {
                       item[index],
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold
-                      ),
                     ),
                   )
                 ]
