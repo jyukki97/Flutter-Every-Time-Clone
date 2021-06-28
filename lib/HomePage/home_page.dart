@@ -4,6 +4,7 @@ import 'package:flutter_app/HomePage/Widget/favorite_board_widget.dart';
 import 'package:flutter_app/HomePage/Widget/realtime_board_widget.dart';
 import 'package:flutter_app/HomePage/Widget/top_bottons_widget.dart';
 import 'package:flutter_app/HomePage/Widget/top_list_widget.dart';
+import 'package:flutter_app/Utils/Function.dart';
 import 'package:flutter_app/state.dart';
 
 import 'Widget/hot_board_widget.dart';
@@ -25,12 +26,12 @@ class _HomePageState extends State<HomePage> {
       if(_scrollController.offset > 0){
         if(elevation==0.0){
           setState(() {
-            elevation = 5.0;
+            elevation = 3.0;
           });
         }
 
       }else {
-        if(elevation==5.0){
+        if(elevation==3.0){
           setState(() {
             elevation = 0.0;
           });
@@ -66,41 +67,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: [
-            ClipOval(
-              child: Material(
-                color: Colors.white,
-                child: InkWell(
-                  onTap: () {
-                  },
-                  child: SizedBox(
-                      width: 56,
-                      height: 56,
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                        size: 28,
-                      )
-                  ),
-                ),
-              ),
-            ),
-            ClipOval(
-              child: Material(
-                color: Colors.white,
-                child: InkWell(
-                  onTap: () {},
-                  child: SizedBox(
-                      width: 56,
-                      height: 56,
-                      child: Icon(
-                        Icons.person_outline_rounded,
-                        color: Colors.black,
-                        size: 28,
-                      )
-                  ),
-                ),
-              ),
-            ),
+            circleIconButton(Icons.search_rounded, Colors.white, 56.0, 28.0, (){}),
+            circleIconButton(Icons.person_outline_rounded, Colors.white, 56.0, 28.0, (){}),
             SizedBox(width: 5,)
           ],
         ),
@@ -112,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             TopListWidget(),
             TopButtonsWidget(),
             Container(
-                margin: EdgeInsets.all(15),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color:borderColor

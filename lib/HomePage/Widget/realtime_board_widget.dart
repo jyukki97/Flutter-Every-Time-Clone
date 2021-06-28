@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Utils/Function.dart';
 import '../../state.dart';
-import 'function/icon_with_number.dart';
 
 class RealtimeBoardWidget extends StatelessWidget {
 
@@ -61,8 +61,9 @@ class RealtimeBoardWidget extends StatelessWidget {
                         ),
                       )
                   ),
-                  IconWithNumber(icon: Icons.thumb_up_alt_outlined, number: 0, color: mainColor),
-                  IconWithNumber(icon: Icons.mode_comment_outlined, number: 2, color: blueColor),
+                  iconWithNumber(Icons.thumb_up_alt_outlined, 0, mainColor),
+                  SizedBox(width: 5,),
+                  iconWithNumber(Icons.mode_comment_outlined, 2, blueColor),
                 ],
               )
             ],
@@ -76,7 +77,7 @@ class RealtimeBoardWidget extends StatelessWidget {
     return Container(
       height: 300,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       padding: EdgeInsets.only(top: 5),
       decoration: BoxDecoration(
           border: Border.all(color: borderColor),

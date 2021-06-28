@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/HomePage/NoticePage/notice_page.dart';
+import 'package:flutter_app/HomePage/SubPage/notice_page.dart';
+import 'package:flutter_app/Utils/Function.dart';
 import 'package:get/get.dart';
 import '../../state.dart';
 
@@ -33,17 +34,7 @@ class FavoriteBoardWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 15,
-              height: 15,
-              margin: EdgeInsets.only(left: 5),
-              decoration: BoxDecoration(
-                  color: mainColor,
-                  borderRadius: BorderRadius.circular(3)
-              ),
-              alignment: Alignment.center,
-              child: Text("N", style: TextStyle(color: Colors.white),),
-            )
+            newBox()
           ],
         ),
       ),
@@ -54,7 +45,7 @@ class FavoriteBoardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 15),
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       padding: EdgeInsets.only(top: 5),
       decoration: BoxDecoration(
           border: Border.all(color: borderColor),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/HomePage/home_page.dart';
+import 'package:flutter_app/PostSetPage/post_set_page.dart';
 import 'package:flutter_app/SchedulePage/schedule_page.dart';
-import 'package:flutter_app/state.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> page = [
     HomePage(),
     SchedulePage(),
-    HomePage(),
+    PostSetPage(),
     HomePage(),
     HomePage()
   ];

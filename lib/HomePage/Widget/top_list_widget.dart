@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../state.dart';
-import 'function/custom_scroll_physics.dart';
+import '../../Utils/custom_scroll_physics.dart';
 
 class TopListWidget extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class TopListWidget extends StatefulWidget {
 
 class _TopListWidgetState extends State<TopListWidget> {
   final _controller = ScrollController();
-  final List<int> pages = List.generate(4, (index) => index);
+  final List<int> pages = List.generate(6, (index) => index);
   ScrollPhysics _physics;
 
   @override
@@ -21,9 +21,8 @@ class _TopListWidgetState extends State<TopListWidget> {
     _controller.addListener(() {
       if (_controller.position.haveDimensions && _physics == null) {
         setState(() {
-          var dimension =
-              _controller.position.maxScrollExtent / (pages.length - 1);
-          _physics = CustomScrollPhysics(itemDimension: dimension);
+          var dimension = _controller.position.maxScrollExtent / (pages.length - 1);
+          _physics = CustomScrollPhysics(itemDimension: 310);
         });
       }
     });
@@ -43,7 +42,7 @@ class _TopListWidgetState extends State<TopListWidget> {
               Container(
                 height: double.infinity,
                 width: 300,
-                margin: EdgeInsets.all(15.0),
+                margin: EdgeInsets.only(left: index==0 ? 15 : 5, right: index==pages.length-1 ? 15 : 5, top: 15, bottom: 15),
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   border: Border.all(color: borderColor),

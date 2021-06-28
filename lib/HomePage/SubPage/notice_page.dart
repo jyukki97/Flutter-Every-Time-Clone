@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/HomePage/Widget/function/icon_with_number.dart';
+import 'package:flutter_app/Utils/Function.dart';
 import 'package:flutter_app/state.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -122,8 +122,8 @@ class _NoticePageState extends State<NoticePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        IconWithNumber(icon: Icons.thumb_up_alt_outlined, number: 0, color: mainColor),
-                        IconWithNumber(icon: Icons.mode_comment_outlined, number: 2, color: blueColor),
+                        iconWithNumber(Icons.thumb_up_alt_outlined, 0, mainColor),
+                        iconWithNumber(Icons.mode_comment_outlined, 2, blueColor),
                       ],
                     )
                   ],
