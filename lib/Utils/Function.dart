@@ -46,6 +46,64 @@ iconBox(icon, color) {
       child: Icon(icon, color: color));
 }
 
+// 타이틀 종류 - 타이틀 없는거, 더보기 있는거, 그냥 타이틀만있는거
+nonTitle(Board item) {
+  return SizedBox();
+}
+moreTitle(Board item) {
+  return InkWell(
+    onTap: () {
+      print("click");
+    },
+    child: Padding(
+      padding: EdgeInsets.only(left: 15, right: 10, top: 10, bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            item.title,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18
+            ),
+
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                "더 보기",
+                style: TextStyle(
+                    color: mainColor
+                ),
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 15,
+                color: mainColor,
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+normalTitle(Board item) {
+  return Container(
+    alignment: Alignment.centerLeft,
+    padding: EdgeInsets.all(15),
+    child: Text(
+      item.title,
+      style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18
+      ),
+    ),
+  );
+}
+
+// 게시판 페이지(핀 있는거, 아이콘 있는거)
 pinWithText(Board item, tapFunc) {
   return InkWell(
     onTap: tapFunc,
@@ -105,7 +163,30 @@ pinWithText(Board item, tapFunc) {
     ),
   );
 }
+iconWithText(Board item, tapFunc) {
+  return InkWell(
+    onTap: tapFunc,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      width: double.infinity,
+      child: Row(
+        children: [
+          item.icon,
+          SizedBox(width: 30,),
+          Expanded(child:
+          Text(
+            item.title,
+            style: TextStyle(
+                fontSize: 15
+            ),
+          ))
+        ],
+      ),
+    ),
+  );
+}
 
+// 좋아요 or 댓글 갯수
 iconWithNumber(icon, number, color) {
   return Row(
     children: [
@@ -126,11 +207,12 @@ iconWithNumber(icon, number, color) {
   );
 }
 
+// 컨텐츠에 타이틀이 있는거, 없는거
 contentWithTitle(Content item, tapFunc) {
   return InkWell(
     onTap: tapFunc,
     child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -142,10 +224,13 @@ contentWithTitle(Content item, tapFunc) {
                   fontWeight: FontWeight.bold
               ),
             ),
-            Text(
-              item.contents,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                item.content,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -171,19 +256,21 @@ contentWithTitle(Content item, tapFunc) {
     ),
   );
 }
-
 contentWithDate(Content item, tapFunc) {
   return InkWell(
     onTap: tapFunc,
     child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              item.contents,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                item.content,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -206,6 +293,121 @@ contentWithDate(Content item, tapFunc) {
             )
           ],
         )
+    ),
+  );
+}
+contentWithAnonymous(Content item, tapFunc) {
+  return InkWell(
+    onTap: () {
+
+    },
+    child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  child: Icon(Icons.person, color: Colors.white,),
+                ),
+                SizedBox(width: 10,),
+                Expanded(
+                    child: Text(
+                      "익명",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold
+                      ),
+                    )
+                ),
+                Text(
+                    "${item.date.month.toString().padLeft(2, '0')}"
+                        "/${item.date.day.toString().padLeft(2, '0')} ${item.date.hour.toString().padLeft(2, '0')}"
+                        ":${item.date.minute.toString().padLeft(2, '0')}",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 5,),
+            item.title == null
+                ? SizedBox()
+                : Text(
+              item.title,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                item.content,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                    child: Text(
+                      item.boardName,
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12
+                      ),
+                    )
+                ),
+                iconWithNumber(Icons.thumb_up_alt_outlined, item.like, mainColor),
+                SizedBox(width: 5,),
+                iconWithNumber(Icons.mode_comment_outlined, item.comments, blueColor),
+              ],
+            )
+          ],
+        )
+    ),
+  );
+}
+
+boardNameWithContent(item, tapFunc) {
+  return InkWell(
+    onTap: tapFunc,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(
+            item.title,
+            style: TextStyle(
+                fontSize: 15,
+                color: Colors.black
+            ),
+          ),
+          SizedBox(width: 10,),
+          Expanded(
+            child: Text(
+              item.contents[0].content,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.black87
+              ),
+            ),
+          ),
+          item.hasNew
+              ? newBox()
+              : SizedBox()
+        ],
+      ),
     ),
   );
 }

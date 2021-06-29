@@ -1,14 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Model/Sample/board_sample.dart';
-import 'package:flutter_app/Model/Sample/content_sample.dart';
-import 'package:flutter_app/Utils/Function.dart';
-import 'package:flutter_app/Utils/Widget/moreWidget.dart';
-import 'package:flutter_app/Utils/custom_scroll_physics.dart';
+import 'package:flutter_app/Model/model.dart';
+import 'package:flutter_app/Utils/Widget/boxWidget.dart';
 
 class InfoPage extends StatefulWidget {
+  final List<Board> boardList;
+  InfoPage({this.boardList});
+
   @override
   _InfoPageState createState() => _InfoPageState();
 }
@@ -45,8 +44,7 @@ class _InfoPageState extends State<InfoPage> {
           controller: scrollController,
           child: Column(
             children: [
-              MoreWidget(title: "인기 게시물", moreFunc: (){}, items: popularContentsSample, boardType: contentWithTitle,),
-              MoreWidget(title: "정보게시판", moreFunc: (){}, items: infoContentsSample, boardType: contentWithDate,)
+              for (var i in widget.boardList) BoxWidget(board: i)
             ],
           ),
         )

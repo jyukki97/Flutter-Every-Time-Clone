@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/HomePage/Widget/favorite_board_widget.dart';
-import 'package:flutter_app/HomePage/Widget/realtime_board_widget.dart';
 import 'package:flutter_app/HomePage/Widget/top_bottons_widget.dart';
 import 'package:flutter_app/HomePage/Widget/top_list_widget.dart';
+import 'package:flutter_app/Model/Sample/board_sample.dart';
 import 'package:flutter_app/Utils/Function.dart';
+import 'package:flutter_app/Utils/Widget/boxWidget.dart';
 import 'package:flutter_app/state.dart';
-
-import 'Widget/hot_board_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -92,9 +90,7 @@ class _HomePageState extends State<HomePage> {
                     child: Image.asset('assets/images/thumnnail.png')
                 )
             ),
-            FavoriteBoardWidget(),
-            RealtimeBoardWidget(),
-            HotBoardWidget()
+            for (var i in homePageBoardSample) BoxWidget(board: i,)
           ],
         ),
       ),

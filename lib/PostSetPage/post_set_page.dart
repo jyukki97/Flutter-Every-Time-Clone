@@ -1,8 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Model/Sample/board_sample.dart';
 import 'package:flutter_app/PostSetPage/SubPage/BoardPage/board_page.dart';
-import 'package:flutter_app/PostSetPage/SubPage/InfoPage/InfoPage.dart';
+import 'package:flutter_app/PostSetPage/SubPage/InfoPage/info_page.dart';
+
+import 'SubPage/groupPage/group_page.dart';
 
 class PostSetPage extends StatefulWidget {
   @override
@@ -56,9 +59,9 @@ class _PostSetPageState extends State<PostSetPage> with TickerProviderStateMixin
             controller: _controller,
             children: [
               BoardPage(),
-              InfoPage(),
-              BoardPage(),
-              BoardPage(),
+              InfoPage(boardList: infoBoardSample),
+              InfoPage(boardList: promBoardSample,),
+              GroupPage(),
             ],
           )
         ),

@@ -25,9 +25,9 @@ class CustomScrollPhysics extends ScrollPhysics {
   double _getTargetPixels(ScrollPosition position, Tolerance tolerance, double velocity) {
     double page = _getPage(position);
     if (velocity < -tolerance.velocity) {
-      page -= 0.5;
+      page -= 0.4;
     } else if (velocity > tolerance.velocity) {
-      page += 0.5;
+      page += 0.4;
     }
     return _getPixels(page.roundToDouble());
   }

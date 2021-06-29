@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Model/Sample/board_sample.dart';
+import 'package:flutter_app/PostSetPage/SubPage/BoardPage/Widget/board_box_widget.dart';
 import 'package:flutter_app/PostSetPage/SubPage/BoardPage/Widget/down_box_widget.dart';
-import 'package:flutter_app/PostSetPage/SubPage/BoardPage/Widget/icon_box_widget.dart';
-import 'package:flutter_app/PostSetPage/SubPage/BoardPage/Widget/pin_box_widget.dart';
 import 'package:flutter_app/PostSetPage/SubPage/BoardPage/search_page.dart';
-import 'package:flutter_app/Utils/Function.dart';
-import 'package:flutter_app/Utils/Widget/boxWidget.dart';
 import 'package:flutter_app/state.dart';
 import 'package:get/get.dart';
 
@@ -78,15 +75,14 @@ class _BoardPageState extends State<BoardPage> {
         controller: scrollController,
         child: Column(
           children: [
-            //IconBoxWidget(boardList: firstBoardSample,),
-            //PinBoxWidget(boardList: secondBoardSample,),
-            //IconBoxWidget(boardList: thirdBoardSample,),
-            BoxWidget(items: secondBoardSample, boardType: pinWithText,),
-            //DownBoxWidget(title: "정보", boardList: infoSpreadBoardSample,),
-            //DownBoxWidget(title: "홍보", boardList: promotionSpreadBoardSample,),
-            //DownBoxWidget(title: "단체", boardList: groupSpreadBoardSample,),
+            BoardBoxWidget(boardList: firstBoardSample, widgetType: 0,),
+            BoardBoxWidget(boardList: secondBoardSample, widgetType: 1,),
+            BoardBoxWidget(boardList: thirdBoardSample, widgetType: 0,),
+            DownBoxWidget(title: "정보", boardList: infoSpreadBoardSample,),
+            DownBoxWidget(title: "홍보", boardList: promotionSpreadBoardSample,),
+            DownBoxWidget(title: "단체", boardList: groupSpreadBoardSample,),
             searchWidget(),
-            //PinBoxWidget(boardList: lastBoardSample,),
+            BoardBoxWidget(boardList: lastBoardSample, widgetType: 1,),
           ],
         ),
       ),
