@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Model/model.dart';
 import '../state.dart';
 
-circleIconButton(icon, backColor, boxSize, iconSize, tabFunction) {
+circleIconButton(icon, backColor, boxSize, iconSize, iconColor, tabFunction) {
   return ClipOval(
     child: Material(
       color: backColor,
@@ -14,7 +14,7 @@ circleIconButton(icon, backColor, boxSize, iconSize, tabFunction) {
             height: boxSize,
             child: Icon(
               icon,
-              color: Colors.black,
+              color: iconColor,
               size: iconSize,
             )
         ),
@@ -277,7 +277,7 @@ contentWithDate(Content item, tapFunc) {
               children: [
                 Expanded(
                     child: Text(
-                      item.date.month.toString() + "/" + item.date.day.toString(),
+                      "${item.date.month.toString().padLeft(2, '0')}/${item.date.day.toString().padLeft(2, '0')}",
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12

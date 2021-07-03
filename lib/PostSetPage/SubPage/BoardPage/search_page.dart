@@ -29,7 +29,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
           child: Row(
             children: [
-              circleIconButton(Icons.arrow_back_rounded, Color(0xffe3e3e3), 40.0, 20.0, (){ Get.back();}),
+              circleIconButton(Icons.arrow_back_rounded, Color(0xffe3e3e3), 40.0, 20.0, Colors.black,(){ Get.back();}),
               SizedBox(width: 20,),
               Expanded(
                   child: TextField(

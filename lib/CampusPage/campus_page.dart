@@ -1,21 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/HomePage/Widget/top_bottons_widget.dart';
-import 'package:flutter_app/HomePage/Widget/top_list_widget.dart';
-import 'package:flutter_app/Model/Sample/board_sample.dart';
+import 'package:flutter_app/CampusPage/Widget/grid_widget.dart';
 import 'package:flutter_app/Utils/Function.dart';
-import 'package:flutter_app/Utils/Widget/boxWidget.dart';
-import 'package:flutter_app/state.dart';
 
-class HomePage extends StatefulWidget {
+import '../state.dart';
+
+class CampusPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _CampusPageState createState() => _CampusPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final controller = PageController(viewportFraction: 0.8);
+class _CampusPageState extends State<CampusPage> {
   ScrollController _scrollController = ScrollController(initialScrollOffset: 0,);
-  final List<dynamic> items = [1,2,3,4,5,6,7,8];
   double elevation = 0.0;
 
   @override
@@ -49,14 +45,14 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "에브리타임",
+                "대학생 SNS",
                 style: TextStyle(
                     fontSize: 10,
-                    color: mainColor
+                    color: campusColor
                 ),
               ),
               Text(
-                "인하대",
+                "캠퍼스픽",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black
@@ -65,8 +61,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: [
-            circleIconButton(Icons.search_rounded, Colors.white, 56.0, 28.0, Colors.black, (){}),
-            circleIconButton(Icons.person_outline_rounded, Colors.white, 56.0, 28.0, Colors.black, (){}),
+            circleIconButton(Icons.messenger_rounded, Colors.white, 56.0, 28.0, campusColor, (){}),
             SizedBox(width: 5,)
           ],
         ),
@@ -75,22 +70,7 @@ class _HomePageState extends State<HomePage> {
         controller: _scrollController,
         child: Column(
           children: [
-            TopListWidget(),
-            TopButtonsWidget(),
-            Container(
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color:borderColor
-                  ),
-                    borderRadius: BorderRadius.circular(10)
-                ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset('assets/images/thumnnail.png')
-                )
-            ),
-            for (var i in homePageBoardSample) BoxWidget(board: i,)
+            GridWidget()
           ],
         ),
       ),

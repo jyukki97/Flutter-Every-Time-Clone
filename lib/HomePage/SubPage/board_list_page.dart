@@ -5,15 +5,15 @@ import 'package:flutter_app/state.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-class NoticePage extends StatefulWidget {
+class BoardListPage extends StatefulWidget {
   String title;
-  NoticePage({this.title});
+  BoardListPage({this.title});
 
   @override
-  _NoticePageState createState() => _NoticePageState();
+  _BoardListPageState createState() => _BoardListPageState();
 }
 
-class _NoticePageState extends State<NoticePage> {
+class _BoardListPageState extends State<BoardListPage> {
 
   appbarButtons(icon, name) {
     return ClipOval(

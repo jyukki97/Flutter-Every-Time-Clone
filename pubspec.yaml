@@ -30,6 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.1.4
   fluttertoast: ^4.0.0
+  http: ^0.12.2
+  html: ^0.14.0+4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

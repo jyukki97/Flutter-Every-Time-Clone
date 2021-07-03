@@ -15,10 +15,11 @@ class Board {
 class Content {
   final String boardName;
   final String content;
-  final int like;
-  final int comments;
+  int like;
+  int comments;
+  bool isRead;
   String title;
   Widget icon;
   DateTime date;
-  Content({this.title, this.boardName, this.like, this.comments, this.content, this.icon, this.date});
+  Content({this.title, this.boardName, this.like, this.comments, this.content, this.icon, this.date, this.isRead});
 }
